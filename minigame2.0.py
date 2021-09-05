@@ -1,3 +1,4 @@
+import random
 #рисовалка
 def painting():
     for i in pole:
@@ -22,57 +23,73 @@ painting()
 #список того, что прога может
 command_list = ['up', 'down', 'left','right','exit']
 
+def traps():
+    for i in range(size*2):
+        pole[random.randint(0,size-1)][random.randint(0,size-1)] = 'O'
+        if pole [0][0] == 'O':
+            pole[0][0] == '_'
+
+
+
 
  #подьем крестика
 def up(x,y):      
-    pole[x][y] = '_'
-    if x < 0:
-        x = size - 1
-    x -= 1
-    pole[x][y] = 'x'
+    if pole[x-1][y] == 'O':
+        print('you cant pass here')
+    else:
+        pole[x][y] = '_'
+        if x < 0:
+            x = size - 1
+        x -= 1
+        pole[x][y] = 'x'
     painting()
-    print(x,y)
     return x
 
  #спуск крестика
 def down(x,y):
-    pole[x][y] = '_'
-    if x >= size - 1:
-        x = -1
-    x += 1
-    pole[x][y] = 'x'
+    if pole[x+1][y] == 'O':
+        print('you cant pass here')
+    else:
+        pole[x][y] = '_'
+        if x >= size - 1:
+            x = -1
+        x += 1
+        pole[x][y] = 'x'
     painting()
-    print(x,y)
     return x
 
  #крестик влево
 def left(x,y):
-    pole[x][y] = '_'
-    if y < 0:
-        y = size - 1
-    y -= 1
-    pole[x][y] = 'x'
+    if pole[x][y-1] == 'O':
+        print('you cant pass here')
+    else:
+        pole[x][y] = '_'
+        if y < 0:
+            y = size - 1
+        y -= 1
+        pole[x][y] = 'x'
     painting()
-    print(x,y)
     return y
 
 #крестик вправо
 def right(x,y):
-    pole[x][y] = '_'
-    if y > size - 1:
-        y = 0
-    y = y + 1
-    pole[x][y] = 'x'
+    if pole[x][y+1] == 'O':
+        print('you cant pass here')
+    else:   
+        pole[x][y] = '_'
+        if y > size - 1:
+            y = -1
+        y += 1
+        pole[x][y] = 'x'
     painting()
-    print(x,y)
     return y
 
  #выход
 def exit():
     progress = False
-    return progress
 
 #сама собственно программа
+traps()
 while progress == True:
     user_input = input()
     if user_input == 'up':
