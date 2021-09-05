@@ -87,3 +87,4 @@ while progress == True:
     if user_input == 'exit':
         exit()
 print('good bye')
+#тут есть проблема, что return не возвращает значения x и y, подскажете, почему?
