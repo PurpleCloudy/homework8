@@ -23,7 +23,7 @@ painting()
 command_list = ['up', 'down', 'left','right','exit']
 
 
-#подьем крестика
+ #подьем крестика
 def up(x,y):      
     pole[x][y] = '_'
     if x < 0:
@@ -32,20 +32,20 @@ def up(x,y):
     pole[x][y] = 'x'
     painting()
     print(x,y)
-    return x,y
+    return x
 
-#спуск крестика
+ #спуск крестика
 def down(x,y):
     pole[x][y] = '_'
-    if x > size - 1:
-        x = 0
+    if x >= size - 1:
+        x = -1
     x += 1
     pole[x][y] = 'x'
     painting()
     print(x,y)
-    return x,y
+    return x
 
-#крестик влево
+ #крестик влево
 def left(x,y):
     pole[x][y] = '_'
     if y < 0:
@@ -54,7 +54,7 @@ def left(x,y):
     pole[x][y] = 'x'
     painting()
     print(x,y)
-    return x,y
+    return y
 
 #крестик вправо
 def right(x,y):
@@ -65,9 +65,9 @@ def right(x,y):
     pole[x][y] = 'x'
     painting()
     print(x,y)
-    return x,y+1
+    return y
 
-#выход
+ #выход
 def exit():
     progress = False
     return progress
@@ -76,15 +76,13 @@ def exit():
 while progress == True:
     user_input = input()
     if user_input == 'up':
-        up(x,y)
+        x = up(x,y)
     if user_input == 'down':
-        down(x,y)
+        x = down(x,y)
     if user_input == 'left':
-        left(x,y)
+        y = left(x,y)
     if user_input == 'right':
-        right(x,y)
-        print(x,y)
+        y = right(x,y)
     if user_input == 'exit':
         exit()
 print('good bye')
-#тут есть проблема, что return не возвращает значения x и y, подскажете, почему?
