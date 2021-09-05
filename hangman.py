@@ -25,7 +25,9 @@ def game():
         
 
 def get_word(w):
-    return w[random.randint(0,2)]
+    # random.choice - выбирает в делимом объекте случайный объект
+    # random.shuffle - изменяет делимый и изменяемый объект случайным образом перемешивая значения
+    return random.choice(w)
 
 def start_transform(w):
     t = []
