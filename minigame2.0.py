@@ -73,6 +73,8 @@ def left(x,y):
 
 #крестик вправо
 def right(x,y):
+    #ВАЖНО посмотри на используемые координаты, особенно на действие "y+1", которое ты используешь
+    print(y)
     if pole[x][y+1] == 'O':
         print('you cant pass here')
     else:   
@@ -85,11 +87,15 @@ def right(x,y):
     return y
 
  #выход
-def exit():
+ #ВАЖНО нельзя называть именами зарезервированными в python. exit() функция используется для
+ #выхода из файла
+def _exit():
     progress = False
 
 #сама собственно программа
-traps()
+#ВАЖНО обрати внимание что даже с выключенными ловушками, появляется эта ошибка.
+# traps()
+
 while progress == True:
     user_input = input()
     if user_input == 'up':
@@ -101,5 +107,5 @@ while progress == True:
     if user_input == 'right':
         y = right(x,y)
     if user_input == 'exit':
-        exit()
+        _exit()
 print('good bye')
