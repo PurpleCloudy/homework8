@@ -74,7 +74,9 @@ def left(x,y):
 #крестик вправо
 def right(x,y):
     #ВАЖНО посмотри на используемые координаты, особенно на действие "y+1", которое ты используешь
-    print(y)
+    # if not y+1 < len(pole):
+    #     y = -1
+    y = y if y+1 < len(pole) else -1
     if pole[x][y+1] == 'O':
         print('you cant pass here')
     else:   
