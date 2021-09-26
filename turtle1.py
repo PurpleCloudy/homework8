@@ -43,3 +43,22 @@ door = Door([20]*4)
 door.draw(door.sides, door.angle)
 screen.mainloop()
 
+class Triangle:
+    pass
+
+class Rectangle:
+    pass
+
+class HouseOfDream:
+    def __init__(self, triangle, rectangle):
+        self.roof = triangle
+        self.body = rectangle
+        self.door = rectangle
+
+    def build_roof(self):
+        self.roof.draw()
+
+house = HouseOfDream(Triangle, Rectangle)
+
+while not house:
+    roof_status = house.build_roof()
