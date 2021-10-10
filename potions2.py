@@ -1,4 +1,5 @@
 from random import randint
+import random
 class Potion:
     def __init__(self, name, quality):
         self.name = name
@@ -10,46 +11,36 @@ class Potion:
         new_quality = (self.quality + other.quality) // 2
         return Potion(new_name, new_quality)
     def __sub__(self, other):
-        new_quality = self.quality - randint(1,1000)
+        new_quality = self.quality - other.quality
+        if new_quality <= 0:
+            print('health -10, potion exploded')
         return Potion(self.name, new_quality)
 
-class Mana_Potion:
-    def __init__(self, quality):
-        self.name = 'mana potion'
-        self.quality = quality
+class Mana_Potion(Potion):
     def drinking(self):
         print(f'you drinked mana potion, mana + {quality}')
 
-class Health_Potion:
-    def __init__(self, quality):
-        self.name = 'health potion'
-        self.quality = quality
+class Health_Potion(Potion):
     def drinking(self):
-        print(f'you drinked health potion, health + {quality1}')
+        print(f'you drinked health potion, health + {quality}')
 
-class Mixed_Potion:
-    def __init__(self, quality):
-        self.name = 'mixed potion'
-        self.quality = quality
+class Mixed_Potion(Potion):
     def drinking(self):
         print(f'you drinked health potion, health and mana + {quality}')
-quality = randint(1, 100)
-quality1 = randint(1, 100)
-mana = Mana_Potion(quality)
-mana.drinking()
-health = Health_Potion(quality)
-health.drinking()
-mixed = Mixed_Potion(quality)
-mixed.drinking()
 game = True
 potions = {}
 while game:
-    potion_name = input('Enter your potion name: ')
+    potion_name = [mana_potion, health_potion, super_potion]
     if potion_name == 'exit':
         game = False
     potion_quality = randint(1, 100)
-    new_potion = Potion(potion_name, potion_quality)
-    potions[potion_name] = new_potion
+    if potion_name == mana_potion:
+        mana_potion = Mana_Potion('mana',randint(1,100) )
+    if potion_name == health_potion:
+        health_potion = Health_Potion('health',randint(1,100) )
+    if potion_name == health_potion:
+        super_potion = Mixed_Potion('health and mana',randint(1,100) )
+    potions[potion_name] = 
     if len(potions) >= 2:
         action = input(f'Add(+) or subtract(-) your potions?').lower()
         potion1 = potions.popitem()[1]
